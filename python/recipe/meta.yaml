@@ -1,0 +1,42 @@
+{% set version = "0.1.0" %}
+
+package:
+  name: pack
+  version: {{ version }}
+
+source:
+  path: ../
+  # Use URL of released code in real life
+  # url: https://github.com/elkebir-group/Jumper/archive/v{{ version }}.tar.gz
+  # sha256: 
+
+build:
+  number: 0
+  noarch: python
+
+requirements:
+    build:
+      - python
+      - setuptools
+    host:
+      - python
+      - pysam
+      - numpy
+    run:
+      - python
+      - pysam
+      - numpy
+
+test:
+  imports:
+    - pack
+    - pack.pack
+  commands:
+    - pack -h
+    - pack -n 7
+
+about:
+    home: https://github.com/elkebir-group
+    license: MIT
+    license_file: LICENSE
+    summary: Example package
